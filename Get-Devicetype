@@ -1,0 +1,19 @@
+function Get-DeviceType {
+    $detected = 'Unknown'
+    try {
+        $chassis = Get-CimInstance Win32_SystemEnclosure | Select-Object -ExpandProperty ChassisTypes
+        if ($chassis) {
+            if ($chassis -contains 8 -or $chassis -contains 9 -or $chassis -contains 10 -or $chassis -contains 14) { $detected = 'Laptop' }
+            elseif ($chassis -contains 3 -or $chassis -contains 4 -or $chassis -contains 5 -or $chassis -contains 6 -or $chassis -contains 7) { $detected = 'Desktop' }
+        }
+    } catch { }
+    Write-Host "Select device type (auto-detected: $detected)." -ForegroundColor Cyan
+    $options = @('Laptop','Desktop')
+    do {
+        for ($i=0; $i -lt $options.Count; $i++) { Write-Host "[$($i+1)] $($options[$i])" }
+        $sel = Read-Host "Enter choice (1-2)"
+    } until ($sel -in @('1','2'))
+    $picked = $options[[int]$sel-1]
+    Write-Log "Device type selected: $picked (Detected: $detected)"
+    return $picked
+}

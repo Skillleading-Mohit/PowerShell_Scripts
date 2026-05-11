@@ -1,0 +1,1 @@
+﻿Install-ADDSForest -DomainName "msp.com" -CredDnsDelegation:$false -DatabasePath "C:\Windows/NTDS" -LogPath "C:/Windows/NTDS" -SysvolPath "C:/Windows/SYSVOL" -NoRebootOnCompletion:$False -Force:$true

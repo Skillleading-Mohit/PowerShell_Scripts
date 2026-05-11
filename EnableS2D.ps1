@@ -10,8 +10,8 @@
 #
 #Step 1. Install the windows server roles and features
 #
-Invoke-Command -ComputerName SEA-SVR1,SEA-SVR2,SEA-SVR3 -ScriptBlock {Install-WindowsFeature -Name File-services}
-Invoke-Command -ComputerName SEA-SVR1,SEA-SVR2,SEA-SVR3 -ScriptBlock {Restart-Computer -Force}
+Invoke-Command -ComputerName S2D-NODE-1,S2D-NODE-2,S2D-NODE-3 -ScriptBlock {Install-WindowsFeature -Name File-services}
+Invoke-Command -ComputerName S2D-NODE-1,S2D-NODE-2,S2D-NODE-3 -ScriptBlock {Restart-Computer -Force}
 Install-WindowsFeature RSAT-Clustering-MGMT
 #
 # Step 2. Validate Cluster

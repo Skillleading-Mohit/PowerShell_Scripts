@@ -1,1 +1,0 @@
-start-vm S2D-NODE-1,S2D-NODE-2,S2D-NODE-3
